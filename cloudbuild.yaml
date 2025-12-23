@@ -13,7 +13,7 @@ steps:
     args:
       - 'storage'
       - 'rsync'
-      - '--delete'
+      - '--delete-unmatched-destination-objects'
       - 'build/'
       - 'gs://sumbuddy-docs-site'
 options:
