@@ -10,7 +10,7 @@ steps:
 # Store the generated static content as artifacts
 artifacts:
   objects:
-    location: 'gs://sumbuddy-docs-site/docs'
+    location: 'gs://sumbuddy-docs-site/'
     paths: ['build/**']
 options:
   logging: CLOUD_LOGGING_ONLY
