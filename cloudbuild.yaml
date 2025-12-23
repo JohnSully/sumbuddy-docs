@@ -1,9 +1,9 @@
 steps:
   # Install dependencies
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: 'gcr.io/cloud-builders/npm:20'
     args: ['install']
   # Build the static website
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: 'gcr.io/cloud-builders/npm:20'
     args: ['run', 'build']
 # Store the generated static content as artifacts
 artifacts:
