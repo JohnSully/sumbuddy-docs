@@ -8,9 +8,14 @@ steps:
     entrypoint: 'npm'
     args: ['run', 'build']
 # Store the generated static content as artifacts
-artifacts:
-  objects:
-    location: 'gs://sumbuddy-docs-site/'
-    paths: ['build/**']
+  # Deploy to GCS
+  - name: 'gcr.io/google.com/cloudsdktool/google-cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'storage'
+      - 'rsync'
+      - '--delete'
+      - 'build/'
+      - 'gs://sumbuddy-docs-site'
 options:
   logging: CLOUD_LOGGING_ONLY
