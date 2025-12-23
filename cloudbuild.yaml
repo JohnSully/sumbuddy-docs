@@ -1,0 +1,12 @@
+steps:
+  # Install dependencies
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+  # Build the static website
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+# Store the generated static content as artifacts
+artifacts:
+  objects:
+    location: 'gs://sumbuddy-docs-site/docs'
+    paths: ['build/**']

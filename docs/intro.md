@@ -2,46 +2,33 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Welcome to Sum Buddy
 
-Let's discover **Docusaurus in less than 5 minutes**.
+**Sum Buddy** is the AI-powered spreadsheet that understands natural language. Create, analyze, and manipulate spreadsheets using conversational commands powered by AI.
+
+## What is Sum Buddy?
+
+Sum Buddy combines the familiar functionality of traditional spreadsheets (like Excel or Google Sheets) with the power of artificial intelligence. Instead of manually creating tables, writing complex formulas, or formatting cells, you can simply tell Sum Buddy what you want, and it does it for you.
+
+## Key Features
+
+- **Natural Language Interface**: Chat with your spreadsheet using plain English
+- **AI Agent (Buddy)**: An intelligent assistant that understands your intent and executes spreadsheet operations
+- **Full Spreadsheet Functionality**: All the features you expect - formulas, charts, styling, import/export
+- **40+ Supported Formulas**: SUM, AVERAGE, IF, VLOOKUP, and many more
+- **Excel Compatible**: Import and export Excel files seamlessly
+- **Charts & Visualizations**: Create bar charts, line charts, scatter plots, and more
+- **Templates**: Pre-built templates for common use cases
+- **Cloud Storage**: Save and access your spreadsheets anywhere
+
+## Quick Example
+
+Instead of manually creating a budget table, you can simply say:
+
+> "Create a monthly budget table with categories for rent, groceries, utilities, and entertainment. Set the rent to $1500."
+
+Buddy will instantly create a properly formatted table with your data.
 
 ## Getting Started
 
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Ready to get started? Visit [sumbuddy.net](https://www.sumbuddy.net) to start using Sum Buddy today!

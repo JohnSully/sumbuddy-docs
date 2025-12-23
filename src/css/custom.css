@@ -1,30 +1,230 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Sum Buddy Documentation - Custom Styles
+ * Matching the look and feel of sumbuddy.net
  */
 
-/* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Sum Buddy color palette - based on the main app */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Primary colors - using Tailwind blue palette like Sum Buddy */
+  --ifm-color-primary: #3b82f6;
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
+
+  /* Buddy button colors */
+  --buddy-bg: #eff6ff; /* blue-50 */
+  --buddy-bg-hover: #dbeafe; /* blue-100 */
+  --buddy-text: #2b4250;
+  --buddy-border: #2b4250;
+
+  /* Neutral grays - matching Sum Buddy's UI */
+  --ifm-color-gray-50: #f9fafb;
+  --ifm-color-gray-100: #f3f4f6;
+  --ifm-color-gray-200: #e5e7eb;
+  --ifm-color-gray-300: #d1d5db;
+  --ifm-color-gray-400: #9ca3af;
+  --ifm-color-gray-500: #6b7280;
+  --ifm-color-gray-600: #4b5563;
+  --ifm-color-gray-700: #374151;
+  --ifm-color-gray-800: #1f2937;
+  --ifm-color-gray-900: #111827;
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ifm-font-size-base: 16px;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-line-height-base: 1.6;
+
+  /* Navbar */
+  --ifm-navbar-background-color: #f9fafb;
+  --ifm-navbar-link-color: #374151;
+  --ifm-navbar-link-hover-color: #111827;
+
+  /* Code blocks */
+  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.1);
+
+  /* Borders and radius */
+  --ifm-border-radius: 6px;
+  --ifm-button-border-radius: 4px;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode - matching Sum Buddy's color scheme */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+
+  --ifm-navbar-background-color: #1f2937;
+  --ifm-background-color: #111827;
+  --ifm-background-surface-color: #1f2937;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Inter font for consistency with Sum Buddy */
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Navbar styling to match Sum Buddy */
+.navbar {
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .navbar {
+  border-bottom: 1px solid #374151;
+}
+
+/* Button styling - matching Sum Buddy's buddy-button style */
+.button {
+  font-weight: 600;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.button--primary {
+  background-color: var(--buddy-bg);
+  border: 1px solid var(--buddy-border);
+  color: var(--buddy-text);
+  font-weight: 600;
+}
+
+.button--primary:hover {
+  background-color: var(--buddy-bg-hover);
+  border-color: var(--buddy-border);
+  color: var(--buddy-text);
+}
+
+/* Code blocks */
+code {
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Links - using Sum Buddy's dark text color */
+a {
+  color: var(--buddy-text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #1f2937;
+  text-decoration: underline;
+}
+
+/* Sidebar */
+.menu__link {
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.menu__link:hover {
+  background-color: #f3f4f6;
+}
+
+[data-theme='dark'] .menu__link:hover {
+  background-color: #374151;
+}
+
+.menu__link--active {
+  background-color: var(--buddy-bg-hover);
+  color: var(--buddy-text);
+  font-weight: 600;
+}
+
+[data-theme='dark'] .menu__link--active {
+  background-color: #1e40af;
+  color: #dbeafe;
+}
+
+/* Footer */
+.footer {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.footer__link-item {
+  color: #d1d5db;
+}
+
+.footer__link-item:hover {
+  color: #f9fafb;
+}
+
+/* Table of contents */
+.table-of-contents__link {
+  color: #6b7280;
+}
+
+.table-of-contents__link--active {
+  color: var(--buddy-text);
+  font-weight: 600;
+}
+
+.table-of-contents__link:hover {
+  color: #374151;
+}
+
+/* Navbar improvements */
+.navbar__item {
+  font-weight: 500;
+}
+
+.navbar__link--active {
+  color: var(--buddy-text);
+  font-weight: 600;
+}
+
+/* Additional Sum Buddy styling */
+.pagination-nav__link {
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--buddy-border);
+}
+
+.pagination-nav__link--next:hover,
+.pagination-nav__link--prev:hover {
+  background-color: var(--buddy-bg);
+}
+
+/* Override Docusaurus default bright blue colors */
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--buddy-text);
+}
+
+.menu__link--sublist-caret:after {
+  background: var(--ifm-menu-link-sublist-icon) 50% / 2rem 2rem;
+}
+
+/* Breadcrumbs */
+.breadcrumbs__link {
+  color: #6b7280;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--buddy-text);
+}
+
+/* Doc cards */
+.card {
+  border-color: #e5e7eb;
+}
+
+.card:hover {
+  border-color: var(--buddy-border);
 }
