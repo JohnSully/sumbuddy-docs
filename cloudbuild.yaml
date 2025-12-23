@@ -9,8 +9,7 @@ steps:
     args: ['run', 'build']
 # Store the generated static content as artifacts
   # Deploy to GCS
-  - name: 'gcr.io/google.com/cloudsdktool/google-cloud-sdk'
-    entrypoint: 'gcloud'
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'storage'
       - 'rsync'
