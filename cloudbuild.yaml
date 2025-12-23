@@ -10,3 +10,5 @@ artifacts:
   objects:
     location: 'gs://sumbuddy-docs-site/docs'
     paths: ['build/**']
+options:
+  logging: CLOUD_LOGGING_ONLY
