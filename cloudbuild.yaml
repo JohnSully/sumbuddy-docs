@@ -18,8 +18,8 @@ steps:
         # Configuration
         INSTANCE_NAME="webserver"
         ZONE="us-central1-a"
-        REMOTE_WEBROOT="/var/www/docs.sumbuddy.net"
-        NEW_DIR="$REMOTE_WEBROOT/$SHORT_SHA"
+        REMOTE_WEBROOT23="/var/www/docs.sumbuddy.net"
+        NEW_DIR="$REMOTE_WEBROOT23/$SHORT_SHA"
         
         echo "Deploying to $INSTANCE_NAME in $ZONE..."
 
@@ -44,7 +44,7 @@ steps:
           sudo chown -R www-data:www-data $NEW_DIR
           
           # 4. Update the 'current' symlink (Atomic Switch)
-          sudo ln -sfn $NEW_DIR $REMOTE_WEBROOT/current
+          sudo ln -sfn $NEW_DIR $REMOTE_WEBROOT23/current
           
           # 5. Cleanup temp files
           rm -rf ~/temp_deploy_$SHORT_SHA
