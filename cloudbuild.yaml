@@ -34,16 +34,16 @@ steps:
         # Now we SSH in and use 'sudo' to move files to the protected /var/www area
         gcloud compute ssh ${_INSTANCE_NAME} --zone=${_ZONE} --command="
           # 1. Create the destination directory
-          sudo mkdir -p $NEW_DIR
+          sudo mkdir -p ${_NEW_DIR}
           
           # 2. Move files from temp home dir to /var/www
-          sudo cp -r ~/temp_deploy_$SHORT_SHA/* $NEW_DIR/
+          sudo cp -r ~/temp_deploy_$SHORT_SHA/* ${_NEW_DIR}/
           
           # 3. Fix permissions for Nginx
-          sudo chown -R www-data:www-data $NEW_DIR
+          sudo chown -R www-data:www-data ${_NEW_DIR}
           
           # 4. Update the 'current' symlink (Atomic Switch)
-          sudo ln -sfn $NEW_DIR ${_REMOTE_WEBROOT}/current
+          sudo ln -sfn ${_NEW_DIR} ${_REMOTE_WEBROOT}/current
           
           # 5. Cleanup temp files
           rm -rf ~/temp_deploy_$SHORT_SHA
