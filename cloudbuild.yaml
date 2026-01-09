@@ -52,6 +52,7 @@ steps:
           sudo systemctl reload nginx
 
           # 7. Cleanup older deploys
+          shopt -s extglob
           cd $$REMOTE_WEBROOT/builds; sudo rm -r !(\"$SHORT_SHA\")
         "
 
