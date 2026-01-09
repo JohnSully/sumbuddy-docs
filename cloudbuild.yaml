@@ -16,7 +16,7 @@ steps:
       - 'INSTANCE_NAME=webserver'
       - 'ZONE=us-central1-a'
       - 'REMOTE_WEBROOT="/var/www/docs.sumbuddy.net"'
-      - 'NEW_DIR="${_REMOTE_WEBROOT}/$SHORT_SHA"'
+      - 'NEW_DIR="${_REMOTE_WEBROOT}/$SHORT_SHA"' 
     args:
       - '-c'
       - |
