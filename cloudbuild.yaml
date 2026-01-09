@@ -12,15 +12,14 @@ steps:
   # 3. Deploy via OS Login
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
+    env:
+      - 'INSTANCE_NAME=webserver'
+      - 'ZONE=us-central1-a'
+      - 'REMOTE_WEBROOT23="/var/www/docs.sumbuddy.net"'
+      - 'NEW_DIR="$REMOTE_WEBROOT23/$SHORT_SHA"'
     args:
       - '-c'
       - |
-        # Configuration
-        INSTANCE_NAME="webserver"
-        ZONE="us-central1-a"
-        REMOTE_WEBROOT23="/var/www/docs.sumbuddy.net"
-        NEW_DIR="$REMOTE_WEBROOT23/$SHORT_SHA"
-        
         echo "Deploying to $INSTANCE_NAME in $ZONE..."
 
         # A. Create a temporary folder on the VM (in the user's home dir)
