@@ -13,37 +13,37 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     env:
-      - '_INSTANCE_NAME=webserver'
-      - '_ZONE=us-central1-a'
-      - '_REMOTE_WEBROOT="/var/www/docs.sumbuddy.net"'
-      - '_NEW_DIR="${_REMOTE_WEBROOT}/$SHORT_SHA"'
+      - 'INSTANCE_NAME=webserver'
+      - 'ZONE=us-central1-a'
+      - 'REMOTE_WEBROOT="/var/www/docs.sumbuddy.net"'
+      - 'NEW_DIR="${_REMOTE_WEBROOT}/$SHORT_SHA"'
     args:
       - '-c'
       - |
-        echo "Deploying to ${_INSTANCE_NAME} in ${_ZONE}..."
+        echo "Deploying to $$INSTANCE_NAME in $$ZONE..."
 
         # A. Create a temporary folder on the VM (in the user's home dir)
         # We can't SCP directly to /var/www because we aren't root yet.
-        gcloud compute ssh ${_INSTANCE_NAME} --zone=${_ZONE} --command="mkdir -p ~/temp_deploy_$SHORT_SHA"
+        gcloud compute ssh $$INSTANCE_NAME --zone=$$ZONE --command="mkdir -p ~/temp_deploy_$SHORT_SHA"
 
         # B. Upload files to the temporary folder
         # 'compute scp' handles the keys and connection for us
-        gcloud compute scp --recurse build/* ${_INSTANCE_NAME}:~/temp_deploy_$SHORT_SHA --zone=${_ZONE}
+        gcloud compute scp --recurse build/* $$INSTANCE_NAME:~/temp_deploy_$SHORT_SHA --zone=$$ZONE
 
         # C. The Atomic Move & Switch
         # Now we SSH in and use 'sudo' to move files to the protected /var/www area
-        gcloud compute ssh ${_INSTANCE_NAME} --zone=${_ZONE} --command="
+        gcloud compute ssh $$INSTANCE_NAME --zone=$$ZONE --command="
           # 1. Create the destination directory
-          sudo mkdir -p ${_NEW_DIR}
+          sudo mkdir -p $$NEW_DIR
           
           # 2. Move files from temp home dir to /var/www
-          sudo cp -r ~/temp_deploy_$SHORT_SHA/* ${_NEW_DIR}/
+          sudo cp -r ~/temp_deploy_$SHORT_SHA/* $$NEW_DIR/
           
           # 3. Fix permissions for Nginx
-          sudo chown -R www-data:www-data ${_NEW_DIR}
+          sudo chown -R www-data:www-data $$NEW_DIR
           
           # 4. Update the 'current' symlink (Atomic Switch)
-          sudo ln -sfn ${_NEW_DIR} ${_REMOTE_WEBROOT}/current
+          sudo ln -sfn $$NEW_DIR $$REMOTE_WEBROOT/current
           
           # 5. Cleanup temp files
           rm -rf ~/temp_deploy_$SHORT_SHA
