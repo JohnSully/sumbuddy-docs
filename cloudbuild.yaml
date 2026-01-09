@@ -19,7 +19,7 @@ steps:
     args:
       - '-c'
       - |
-        NEW_DIR="$$REMOTE_WEBROOT/$SHORT_SHA"
+        NEW_DIR="$$REMOTE_WEBROOT/builds/$SHORT_SHA"
         echo "Deploying to $$INSTANCE_NAME in $$ZONE..."
 
         # A. Create a temporary folder on the VM (in the user's home dir)
@@ -50,6 +50,9 @@ steps:
           
           # 6. Optional: Reload Nginx (good practice)
           sudo systemctl reload nginx
+
+          # 7. Cleanup older deploys
+          cd $$REMOTE_WEBROOT/builds; sudo rm -r !(\"$SHORT_SHA\")
         "
 
 options:
