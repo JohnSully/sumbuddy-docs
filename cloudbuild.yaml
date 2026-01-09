@@ -13,26 +13,26 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     env:
-      - 'INSTANCE_NAME=webserver'
-      - 'ZONE=us-central1-a'
+      - '_INSTANCE_NAME=webserver'
+      - '_ZONE=us-central1-a'
       - '_REMOTE_WEBROOT="/var/www/docs.sumbuddy.net"'
       - '_NEW_DIR="${_REMOTE_WEBROOT}/$SHORT_SHA"'
     args:
       - '-c'
       - |
-        echo "Deploying to $INSTANCE_NAME in $ZONE..."
+        echo "Deploying to ${_INSTANCE_NAME} in ${_ZONE}..."
 
         # A. Create a temporary folder on the VM (in the user's home dir)
         # We can't SCP directly to /var/www because we aren't root yet.
-        gcloud compute ssh $INSTANCE_NAME --zone=$ZONE --command="mkdir -p ~/temp_deploy_$SHORT_SHA"
+        gcloud compute ssh ${_INSTANCE_NAME} --zone=${_ZONE} --command="mkdir -p ~/temp_deploy_$SHORT_SHA"
 
         # B. Upload files to the temporary folder
         # 'compute scp' handles the keys and connection for us
-        gcloud compute scp --recurse build/* $INSTANCE_NAME:~/temp_deploy_$SHORT_SHA --zone=$ZONE
+        gcloud compute scp --recurse build/* ${_INSTANCE_NAME}:~/temp_deploy_$SHORT_SHA --zone=${_ZONE}
 
         # C. The Atomic Move & Switch
         # Now we SSH in and use 'sudo' to move files to the protected /var/www area
-        gcloud compute ssh $INSTANCE_NAME --zone=$ZONE --command="
+        gcloud compute ssh ${_INSTANCE_NAME} --zone=${_ZONE} --command="
           # 1. Create the destination directory
           sudo mkdir -p $NEW_DIR
           
